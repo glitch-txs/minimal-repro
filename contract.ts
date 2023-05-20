@@ -35,7 +35,7 @@ export class InitContractTest<ABI extends Abi> {
   
     }
 
-    async read(callInfo: CallInfo<ExtractAbiFunctionNames<typeof this.abi, 'view'>>){
+    async read(callInfo: CallInfo<ExtractAbiFunctionNames<typeof this.abi, 'view' | 'pure'>>){
         return await this.contract[callInfo.name](...callInfo.params)
     }
 }
