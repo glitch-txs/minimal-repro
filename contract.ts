@@ -24,14 +24,14 @@ export class InitContractTest<ABI extends Abi> {
 
     async write(callInfo: CallInfo<ExtractAbiFunctionNames<typeof this.abi, 'payable'>>){
 
-    if(!window?.ethereum) return
+        if(!window?.ethereum) return
 
-    const web3Provider = new ethers.providers.Web3Provider(window.ethereum)
-    const signer = web3Provider.getSigner()
-        
-    const contract = new ethers.Contract(this.address, this.abi as ethers.ContractInterface, signer)
+        const web3Provider = new ethers.providers.Web3Provider(window.ethereum)
+        const signer = web3Provider.getSigner()
+            
+        const contract = new ethers.Contract(this.address, this.abi as ethers.ContractInterface, signer)
 
-    await contract[callInfo.name](...callInfo.params).catch(console.error)
+        await contract[callInfo.name](...callInfo.params).catch(console.error)
   
     }
 
